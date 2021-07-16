@@ -1,10 +1,11 @@
 import React from 'react';
+import classes from './Conditions.module.css'
 
 const Conditions = (props) => {
 
     return (
 
-        <div>
+        <div className={classes.Wrapper}>
             {/* DISPLAY THIS DATA ONLY WHEN THE HTTP RESPONSE CODE IS 200 (SUCESSFUL) */}
             {props.responseObj.cod === 200 ? 
 

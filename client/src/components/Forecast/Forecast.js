@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Conditions from '../Conditions/Conditions';
+import classes from './Forecast.module.css';
 
 const Forecast = () => {
 
@@ -46,11 +47,12 @@ const Forecast = () => {
                 placeholder="Enter City"
                 maxLength="50"
                 value={city}
+                className={classes.textInput}
                 onChange={(e) => setCity(e.target.value)}
 
             />
 
-            <label>
+            <label className={classes.Radio}>
 
                 <input
 
@@ -66,7 +68,7 @@ const Forecast = () => {
 
             </label>
 
-            <label>
+            <label className={classes.Radio}>
 
                 <input
 
@@ -82,7 +84,7 @@ const Forecast = () => {
 
             </label>
 
-            <button type="submit">Get Forecast</button>
+            <button className={classes.Button} type="submit">Get Forecast</button>
 
         </form>
 
