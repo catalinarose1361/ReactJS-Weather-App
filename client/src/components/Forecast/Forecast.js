@@ -18,7 +18,7 @@ const Forecast = () => {
 
     const uriEncodedCity = encodeURIComponent(city)
 
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?units=${unit}&q=${uriEncodedCity}&appid=e85d65f27c4dba6f1470e1cee950c874`
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?units=${unit}&q=${uriEncodedCity}&appid=${process.env.REACT_APP_API_KEY}`
 
    function getForecast(e) {
 
