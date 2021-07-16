@@ -1,6 +1,7 @@
 
 import { React, useState, useEffect } from "react";
-
+import './App.css';
+import Forecast from "./components/Forecast/Forecast";
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
         <main>
 
-            {/* ADD WEATHER COMPONENT */}
+            <Forecast />
 
         </main>
 
