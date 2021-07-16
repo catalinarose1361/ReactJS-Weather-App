@@ -2,16 +2,19 @@
 import { React, useState, useEffect } from "react";
 import './App.css';
 import Forecast from "./components/Forecast/Forecast";
+import Logo from './components/Logo/Logo';
 
 function App() {
 
     return (
         <>
 
-        <header>
+        <header className="App-header">
 
-            <h1>React.js Weather Application</h1>
+            <Logo />
 
+            <h1>React Weather App</h1>
+            
         </header>
 
         <main>
