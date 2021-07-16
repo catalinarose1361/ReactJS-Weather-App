@@ -12,6 +12,10 @@ const Forecast = () => {
 
     let [unit, setUnit] = useState('imperial');
 
+    let [error, setError] = useState(false);
+
+    let [loading, setLoading] = useState(false);
+
     const uriEncodedCity = encodeURIComponent(city)
 
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?units=${unit}&q=${uriEncodedCity}&appid=e85d65f27c4dba6f1470e1cee950c874`
@@ -21,13 +25,47 @@ const Forecast = () => {
     // PREVENTS THE PAGE FROM REFRESHING AFTER CLICKING 'GET FORECAST' BUTTON
     e.preventDefault();
 
+    //IF THE USER DOESNT ENTER ANY CHAR IN THE INPUT, DONT REQUEST
+    if (city.length === 0) {
+        return setError(true);
+    }
+
+    // Clear state in preparation for new data
+   setError(false);
+   setResponseObj({});
+  
+   setLoading(true);
+
+
+
     fetch(apiUrl)
-    // getForecast CONVERTS THE RESPONSE INTO A JSON OBJECT 
+
+    //CONVERTS THE RESPONSE INTO A JSON OBJECT 
     .then(response => response.json())
+
     //AND THEN ASSIGN THE RESPONSE VALUE TO THE responseObj VARIABLE IN OUR STATE
     .then(response => {
-        setResponseObj(response)
-    })
+
+        //THROW AN ERROR IF THE CODE ON THE RESPONSE IS NOT 200
+        if (response.cod !== 200) {
+
+            throw new Error()
+
+        }
+
+        setResponseObj(response);
+
+        setLoading(false);
+
+    }).catch(err => {
+
+        setError(true);
+
+        setLoading(false);
+
+        console.log(err.message);
+
+    });
 
    }
 
@@ -92,6 +130,8 @@ const Forecast = () => {
         <Conditions 
 
             responseObj={responseObj}
+            error={error} 
+            loading={loading}
         
         />
 
